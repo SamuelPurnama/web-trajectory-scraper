@@ -1,0 +1,75 @@
+You are a senior coding professional. Generate a Python file named `tasks_{website}.py`.
+
+CONTEXT
+
+* Website: {website}
+* AXTree (navigation/URLs/elements): {axtree}
+* Style/structure reference: {reference_file}
+
+GOAL
+Produce a set (MINIMUM 10) of unique, realistic, well-defined task templates that simulate end-to-end user interactions on {website}. Balance difficulty (not trivial, not convoluted). You do not need to use all links from {axtree}; select only those that enable clear, realistic flows.
+
+YOU ARE GIVEN:
+
+* Website URL: {website} - The target website to generate tasks for
+* Accessibility Tree: {axtree} - Complete structural information about the website including:
+  - Navigation elements and links
+  - Interactive components (buttons, forms, inputs)
+  - Page hierarchy and content structure
+  - User interface elements and their relationships
+* Reference File: {reference_file} - Template and style guide for task generation
+* Screenshots: Visual context of the main website page
+* Child Pages Analysis: Additional functionality found in other pages that might be useful
+
+CONSTRAINTS
+0. YOU HAVE TO CREATE A MINIMUM OF 10 DIFFERENT TASKS.
+1. Return ONLY the full contents of `tasks_{website}.py` (no prose, no comments).
+2. Follow naming, structure, and patterns from reference_file (imports, task schema, helpers).
+3. Each task must have: unique name/id, clear objective, deterministic steps, input fields (if any) with sane defaults, success criteria/assertions, and realistic negative/edge checks where appropriate.
+4. Cover diverse intents (e.g., search/browse, account/auth/signup, booking/purchase flow, voucher/eCredit/certificate redemption, support/help/FAQ navigation, multi-step navigation with back/forward, form validation).
+5. Keep external dependencies identical to {reference_file}. If a helper exists there, reuse it; otherwise implement minimal inline equivalents consistent with that style.
+6. Ensure tasks are executable as-is (valid Python, no placeholders except the braces in this prompt), deterministic, and stable against minor UI variation (use robust selectors per reference_file conventions).
+7. Prefer tasks that terminate with verifiable state (URL, DOM text, confirmation number/pattern, cart total, banner text, signed-in indicator).
+8. No scraping or terms violations; keep flows realistic and lightweight.
+9. These tasks can be done from scratch. They do not require having an account, having a already purchased anything, or any prerequisite info. They can be done by anyone.
+10. Set the config to generate 10 of each task type, for a total of 70-90 tasks total. 
+11. You dont have access to emails, vouchers, already purchased. TASKS CANT REQUIRE prerequisite items such as purchases, accounts, etc.
+12. For variable selectors (dropdowns, lists, filters, etc.), provide 20 or more choices unless there is a fixed amount. Examples:
+    - Airport codes: Provide 20+ major airports (LAX, JFK, ORD, etc.)
+    - Cities: Provide 20+ major cities (New York, Los Angeles, Chicago, etc.)
+    - Dates: Provide 20+ different date combinations (today+1, today+7, today+30, etc.)
+    - Categories: Provide 20+ different categories if available
+    - Price ranges: Provide 20+ different price ranges
+    - Filters: Provide 20+ different filter combinations
+    - Search terms: Provide 20+ different search terms
+    - Any other variable selectors should have 20+ options 
+13. You are required to ground your task types based on the main functionalities found in the main page. This should cover at least 6 different tasks. 
+    Then you can refer to the functionalities in the child pages and generate more task types based on that. If there are a lot functionalities in the child pages,
+    you may create up to 15 different types.
+14. You should dive deep into the core functionalities which includes filters. 
+
+OUTPUT FORMAT
+
+* A single valid Python module `tasks_{website}.py` that:
+
+  * Imports exactly what reference_file imports (plus minimal additions if required).
+  * Defines a top-level `TASKS` (or equivalent) list/dict mirroring {reference_file}.
+  * Implements each task as per the reference task schema (fields, steps, assertions).
+  * Includes a `main` entrypoint if reference_file uses one (supporting JSON dump when run).
+  * Passes `python -m tasks_{website} main tasks.json` (or the equivalent in reference_file).
+
+QUALITY BAR
+
+* Deterministic, lint-clean, and runnable without modification.
+* Steps use robust element targeting informed by {axtree}.
+* Assertions are specific and machine-verifiable.
+* Tasks are independent and non-overlapping in purpose.
+* Realistic inputs (e.g., city codes, dates offset from “today”, email patterns) with guardrails.
+* Clear failure messaging in assertions to aid debugging.
+
+DELIVERABLE
+Output ONLY the complete source code of `tasks_{website}.py`. No explanations, no markdown, no extra text.
+
+REMINDER
+Each generated task that we generate from the templates must be unique and it cant require prerequisite items such as purchases, accounts, etc. 
+You cant generated tasks that require payment or personal information. 

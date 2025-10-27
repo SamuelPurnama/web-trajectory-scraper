@@ -1,0 +1,989 @@
+=== CHILD 2 PAGE PLAYWRIGHT AXTRESS ===
+URL: https://www.booking.com/flights/sitemap.html?aid=304142&label=gen173nr-10CAEoggI46AdIM1gEaLQCiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALJsu_HBsACAdICJDJmOGFlYzUwLTkyOWQtNGEzYi1iYWUwLTE3YTJjNzc3OTgzMdgCAeACAQ&sid=bfd10c420b9d77186bf8b1b33c3814bb
+
+ACCESSIBILITY TREE:
+--------------------------------------------------
+Role: WebArea
+Name: List of all flight destinations at Booking.com | Cheap flight tickets and deals
+
+  Role: generic
+
+    Role: link
+    Name: Skip to main content
+
+  Role: link
+  Name: Booking.com Online Hotel Reservations
+
+  Role: button
+  Name: Choose your language. Your current language is English (US)
+
+  Role: link
+  Name: Get help with your reservation
+
+  Role: link
+  Name: List your property
+
+  Role: link
+  Name: Register
+
+  Role: link
+  Name: Sign in
+
+  Role: link
+  Name: Home
+
+  Role: link
+  Name: Flights
+
+  Role: text
+  Name: Sitemap
+
+  Role: heading
+  Name: All flight destinations
+  Level: 1
+
+  Role: heading
+  Name: North America
+  Level: 4
+
+  Role: link
+  Name: St. Pierre and Miquelon
+
+  Role: link
+  Name: United States
+
+  Role: link
+  Name: Mexico
+
+  Role: heading
+  Name: Central America
+  Level: 4
+
+  Role: link
+  Name: Nicaragua
+
+  Role: link
+  Name: Panama
+
+  Role: link
+  Name: Belize
+
+  Role: link
+  Name: Costa Rica
+
+  Role: link
+  Name: El Salvador
+
+  Role: link
+  Name: Guatemala
+
+  Role: link
+  Name: Honduras
+
+  Role: heading
+  Name: South America
+  Level: 4
+
+  Role: link
+  Name: Paraguay
+
+  Role: link
+  Name: Peru
+
+  Role: link
+  Name: South Georgia and the South Sandwich Islands
+
+  Role: link
+  Name: Suriname
+
+  Role: link
+  Name: Uruguay
+
+  Role: link
+  Name: Venezuela
+
+  Role: link
+  Name: Argentina
+
+  Role: link
+  Name: Bolivia
+
+  Role: link
+  Name: Brazil
+
+  Role: link
+  Name: Chile
+
+  Role: link
+  Name: Colombia
+
+  Role: link
+  Name: Ecuador
+
+  Role: link
+  Name: Falkland Islands (Malvinas)
+
+  Role: link
+  Name: French Guiana
+
+  Role: link
+  Name: Guyana
+
+  Role: heading
+  Name: Africa
+  Level: 4
+
+  Role: link
+  Name: Niger
+
+  Role: link
+  Name: Nigeria
+
+  Role: link
+  Name: Reunion
+
+  Role: link
+  Name: Rwanda
+
+  Role: link
+  Name: São Tomé and Príncipe
+
+  Role: link
+  Name: Senegal
+
+  Role: link
+  Name: Seychelles
+
+  Role: link
+  Name: Sierra Leone
+
+  Role: link
+  Name: Somalia
+
+  Role: link
+  Name: South Africa
+
+  Role: link
+  Name: Sudan
+
+  Role: link
+  Name: Eswatini
+
+  Role: link
+  Name: Tanzania
+
+  Role: link
+  Name: Togo
+
+  Role: link
+  Name: Tunisia
+
+  Role: link
+  Name: Uganda
+
+  Role: link
+  Name: Zambia
+
+  Role: link
+  Name: Zimbabwe
+
+  Role: link
+  Name: Algeria
+
+  Role: link
+  Name: Angola
+
+  Role: link
+  Name: Benin
+
+  Role: link
+  Name: Botswana
+
+  Role: link
+  Name: Bouvet Island
+
+  Role: link
+  Name: Burkina Faso
+
+  Role: link
+  Name: Burundi
+
+  Role: link
+  Name: Cameroon
+
+  Role: link
+  Name: Cape Verde
+
+  Role: link
+  Name: Central Africa Republic
+
+  Role: link
+  Name: Chad
+
+  Role: link
+  Name: Comoros
+
+  Role: link
+  Name: Congo
+
+  Role: link
+  Name: Democratic Republic of the Congo
+
+  Role: link
+  Name: Ivory Coast
+
+  Role: link
+  Name: Djibouti
+
+  Role: link
+  Name: Egypt
+
+  Role: link
+  Name: Equatorial Guinea
+
+  Role: link
+  Name: Eritrea
+
+  Role: link
+  Name: Ethiopia
+
+  Role: link
+  Name: French Southern Territories
+
+  Role: link
+  Name: Gabon
+
+  Role: link
+  Name: Gambia
+
+  Role: link
+  Name: Ghana
+
+  Role: link
+  Name: Guinea
+
+  Role: link
+  Name: Guinea-Bissau
+
+  Role: link
+  Name: Kenya
+
+  Role: link
+  Name: Lesotho
+
+  Role: link
+  Name: Liberia
+
+  Role: link
+  Name: Libya
+
+  Role: link
+  Name: Madagascar
+
+  Role: link
+  Name: Malawi
+
+  Role: link
+  Name: Mali
+
+  Role: link
+  Name: Mauritania
+
+  Role: link
+  Name: Mauritius
+
+  Role: link
+  Name: Mayotte
+
+  Role: link
+  Name: Morocco
+
+  Role: link
+  Name: Mozambique
+
+  Role: link
+  Name: Namibia
+
+  Role: link
+  Name: South Sudan
+
+  Role: heading
+  Name: Europe
+  Level: 4
+
+  Role: link
+  Name: Norway
+
+  Role: link
+  Name: Poland
+
+  Role: link
+  Name: Portugal
+
+  Role: link
+  Name: Romania
+
+  Role: link
+  Name: Russia
+
+  Role: link
+  Name: San Marino
+
+  Role: link
+  Name: Slovakia
+
+  Role: link
+  Name: Slovenia
+
+  Role: link
+  Name: Spain
+
+  Role: link
+  Name: Northern Cyprus
+
+  Role: link
+  Name: Sweden
+
+  Role: link
+  Name: Switzerland
+
+  Role: link
+  Name: Turkey
+
+  Role: link
+  Name: Ukraine
+
+  Role: link
+  Name: United Kingdom
+
+  Role: link
+  Name: Vatican City
+
+  Role: link
+  Name: Serbia
+
+  Role: link
+  Name: Montenegro
+
+  Role: link
+  Name: Kosovo
+
+  Role: link
+  Name: Abkhazia
+
+  Role: link
+  Name: Albania
+
+  Role: link
+  Name: Andorra
+
+  Role: link
+  Name: Armenia
+
+  Role: link
+  Name: Austria
+
+  Role: link
+  Name: Azerbaijan
+
+  Role: link
+  Name: Belarus
+
+  Role: link
+  Name: Belgium
+
+  Role: link
+  Name: Bosnia and Herzegovina
+
+  Role: link
+  Name: Bulgaria
+
+  Role: link
+  Name: Crimea
+
+  Role: link
+  Name: Croatia
+
+  Role: link
+  Name: Cyprus
+
+  Role: link
+  Name: Czech Republic
+
+  Role: link
+  Name: Denmark
+
+  Role: link
+  Name: Estonia
+
+  Role: link
+  Name: Faroe Islands
+
+  Role: link
+  Name: Finland
+
+  Role: link
+  Name: France
+
+  Role: link
+  Name: Georgia
+
+  Role: link
+  Name: Germany
+
+  Role: link
+  Name: Gibraltar
+
+  Role: link
+  Name: Greece
+
+  Role: link
+  Name: Greenland
+
+  Role: link
+  Name: Hungary
+
+  Role: link
+  Name: Iceland
+
+  Role: link
+  Name: Ireland
+
+  Role: link
+  Name: Italy
+
+  Role: link
+  Name: Latvia
+
+  Role: link
+  Name: Liechtenstein
+
+  Role: link
+  Name: Lithuania
+
+  Role: link
+  Name: Luxembourg
+
+  Role: link
+  Name: North Macedonia
+
+  Role: link
+  Name: Malta
+
+  Role: link
+  Name: Moldova
+
+  Role: link
+  Name: Monaco
+
+  Role: link
+  Name: Netherlands
+
+  Role: heading
+  Name: Middle East
+  Level: 4
+
+  Role: link
+  Name: Oman
+
+  Role: link
+  Name: Palestinian Territory
+
+  Role: link
+  Name: Qatar
+
+  Role: link
+  Name: Saudi Arabia
+
+  Role: link
+  Name: Syria
+
+  Role: link
+  Name: United Arab Emirates
+
+  Role: link
+  Name: Yemen
+
+  Role: link
+  Name: Afghanistan
+
+  Role: link
+  Name: Bahrain
+
+  Role: link
+  Name: Iran
+
+  Role: link
+  Name: Iraq
+
+  Role: link
+  Name: Israel
+
+  Role: link
+  Name: Jordan
+
+  Role: link
+  Name: Kuwait
+
+  Role: link
+  Name: Lebanon
+
+  Role: heading
+  Name: Asia
+  Level: 4
+
+  Role: link
+  Name: Pakistan
+
+  Role: link
+  Name: Philippines
+
+  Role: link
+  Name: Singapore
+
+  Role: link
+  Name: Sri Lanka
+
+  Role: link
+  Name: Taiwan
+
+  Role: link
+  Name: Tajikistan
+
+  Role: link
+  Name: Thailand
+
+  Role: link
+  Name: Turkmenistan
+
+  Role: link
+  Name: Uzbekistan
+
+  Role: link
+  Name: Vietnam
+
+  Role: link
+  Name: American Samoa
+
+  Role: link
+  Name: Bangladesh
+
+  Role: link
+  Name: Bhutan
+
+  Role: link
+  Name: British Indian Ocean Territory
+
+  Role: link
+  Name: Brunei
+
+  Role: link
+  Name: Cambodia
+
+  Role: link
+  Name: China
+
+  Role: link
+  Name: East Timor
+
+  Role: link
+  Name: Heard and McDonald Islands
+
+  Role: link
+  Name: Hong Kong
+
+  Role: link
+  Name: India
+
+  Role: link
+  Name: Indonesia
+
+  Role: link
+  Name: Japan
+
+  Role: link
+  Name: Kazakhstan
+
+  Role: link
+  Name: North Korea
+
+  Role: link
+  Name: South Korea
+
+  Role: link
+  Name: Kyrgyzstan
+
+  Role: link
+  Name: Laos
+
+  Role: link
+  Name: Macau
+
+  Role: link
+  Name: Malaysia
+
+  Role: link
+  Name: Maldives
+
+  Role: link
+  Name: Mongolia
+
+  Role: link
+  Name: Myanmar
+
+  Role: link
+  Name: Nepal
+
+  Role: heading
+  Name: Oceania
+  Level: 4
+
+  Role: link
+  Name: Niue
+
+  Role: link
+  Name: Norfolk Island
+
+  Role: link
+  Name: Northern Mariana Islands
+
+  Role: link
+  Name: Palau
+
+  Role: link
+  Name: Papua New Guinea
+
+  Role: link
+  Name: Pitcairn
+
+  Role: link
+  Name: Samoa
+
+  Role: link
+  Name: Solomon Islands
+
+  Role: link
+  Name: Tokelau
+
+  Role: link
+  Name: Tonga
+
+  Role: link
+  Name: Tuvalu
+
+  Role: link
+  Name: United States Minor Outlying Islands
+
+  Role: link
+  Name: Vanuatu
+
+  Role: link
+  Name: Wallis and Futuna
+
+  Role: link
+  Name: Australia
+
+  Role: link
+  Name: Christmas Island
+
+  Role: link
+  Name: Cocos (K) I.
+
+  Role: link
+  Name: Cook Islands
+
+  Role: link
+  Name: Fiji
+
+  Role: link
+  Name: French Polynesia
+
+  Role: link
+  Name: Guam
+
+  Role: link
+  Name: Kiribati
+
+  Role: link
+  Name: Marshall Islands
+
+  Role: link
+  Name: Micronesia
+
+  Role: link
+  Name: Nauru
+
+  Role: link
+  Name: New Caledonia
+
+  Role: link
+  Name: New Zealand
+
+  Role: heading
+  Name: Caribbean
+  Level: 4
+
+  Role: link
+  Name: Puerto Rico
+
+  Role: link
+  Name: St. Helena
+
+  Role: link
+  Name: Saint Kitts and Nevis
+
+  Role: link
+  Name: Saint Lucia
+
+  Role: link
+  Name: Saint Vincent & Grenadines
+
+  Role: link
+  Name: Trinidad and Tobago
+
+  Role: link
+  Name: Turks & Caicos Islands
+
+  Role: link
+  Name: British Virgin Islands
+
+  Role: link
+  Name: U.S. Virgin Islands
+
+  Role: link
+  Name: Cuba
+
+  Role: link
+  Name: Saint Martin
+
+  Role: link
+  Name: Saint Barts
+
+  Role: link
+  Name: Bonaire St. Eustatius and Saba
+
+  Role: link
+  Name: Curaçao
+
+  Role: link
+  Name: St. Maarten
+
+  Role: link
+  Name: Anguilla
+
+  Role: link
+  Name: Antigua & Barbuda
+
+  Role: link
+  Name: Aruba
+
+  Role: link
+  Name: Bahamas
+
+  Role: link
+  Name: Barbados
+
+  Role: link
+  Name: Bermuda
+
+  Role: link
+  Name: Cayman Islands
+
+  Role: link
+  Name: Dominica
+
+  Role: link
+  Name: Dominican Republic
+
+  Role: link
+  Name: Grenada
+
+  Role: link
+  Name: Guadeloupe
+
+  Role: link
+  Name: Haiti
+
+  Role: link
+  Name: Jamaica
+
+  Role: link
+  Name: Martinique
+
+  Role: link
+  Name: Montserrat
+
+  Role: link
+  Name: List your property
+
+  Role: link
+  Name: Mobile version
+
+  Role: link
+  Name: Your account
+
+  Role: link
+  Name: Make changes online to your booking
+
+  Role: link
+  Name: Customer Service Help
+
+  Role: link
+  Name: Become an affiliate
+
+  Role: link
+  Name: Booking.com for Business
+
+  Role: link
+  Name: Countries
+
+  Role: link
+  Name: Regions
+
+  Role: link
+  Name: Cities
+
+  Role: link
+  Name: Districts
+
+  Role: link
+  Name: Airports
+
+  Role: link
+  Name: Hotels
+
+  Role: link
+  Name: Places of interest
+
+  Role: link
+  Name: Homes
+
+  Role: link
+  Name: Apartments
+
+  Role: link
+  Name: Resorts
+
+  Role: link
+  Name: Villas
+
+  Role: link
+  Name: Hostels
+
+  Role: link
+  Name: B&Bs
+
+  Role: link
+  Name: Guest Houses
+
+  Role: link
+  Name: Unique places to stay
+
+  Role: link
+  Name: Reviews
+
+  Role: link
+  Name: Discover monthly stays
+
+  Role: link
+  Name: Travel articles
+
+  Role: link
+  Name: Seasonal and holiday deals
+
+  Role: link
+  Name: Traveller Review Awards
+
+  Role: link
+  Name: Car rental
+
+  Role: link
+  Name: Flight finder
+
+  Role: link
+  Name: Restaurant reservations
+
+  Role: link
+  Name: Booking.com for Travel Agents
+  Description: Booking.com for Travel Advisers
+
+  Role: link
+  Name: About Booking.com
+
+  Role: link
+  Name: Customer Service Help
+
+  Role: link
+  Name: Partner help
+
+  Role: link
+  Name: Careers
+
+  Role: link
+  Name: Sustainability
+
+  Role: link
+  Name: Press Center
+
+  Role: link
+  Name: Safety Resource Center
+
+  Role: link
+  Name: Investor relations
+
+  Role: link
+  Name: Terms of Service
+
+  Role: link
+  Name: Partner dispute
+
+  Role: link
+  Name: How We Work
+
+  Role: link
+  Name: Privacy & cookie statement
+
+  Role: link
+  Name: Modern Slavery Statement
+
+  Role: link
+  Name: Human Rights Statement
+
+  Role: link
+  Name: Corporate contact
+
+  Role: link
+  Name: Content guidelines and reporting
+
+  Role: link
+  Name: Extranet Log-in
+
+  Role: text
+  Name: Copyright © 1996–2025 Booking.com™. All rights reserved.
+
+  Role: text
+  Name:  
+
+  Role: text
+  Name: Booking.com is part of Booking Holdings Inc., the world leader in online travel and related services.
+
+  Role: image
+  Name: Booking.com
+  Description: Booking.com
+
+  Role: image
+  Name: Priceline.com
+  Description: Priceline.com
+
+  Role: image
+  Name: Kayak
+  Description: Kayak
+
+  Role: image
+  Name: Agoda
+  Description: Agoda
+
+  Role: image
+  Name: OpenTable
+  Description: OpenTable
+

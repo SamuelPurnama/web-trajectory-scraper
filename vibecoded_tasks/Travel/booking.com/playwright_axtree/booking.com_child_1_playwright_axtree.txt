@@ -1,0 +1,27 @@
+=== CHILD 1 PAGE PLAYWRIGHT AXTRESS ===
+URL: https://www.booking.com/index.html?aid=304142&label=gen173nr-10CAEoggI46AdIM1gEaLQCiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALJsu_HBsACAdICJDJmOGFlYzUwLTkyOWQtNGEzYi1iYWUwLTE3YTJjNzc3OTgzMdgCAeACAQ&selected_currency=USD&sid=bfd10c420b9d77186bf8b1b33c3814bb
+
+ACCESSIBILITY TREE:
+--------------------------------------------------
+Role: WebArea
+Name: Booking.com | Official site | The best hotels, flights, car rentals & accommodations
+
+  Role: button
+  Name: Dismiss sign-in info.
+
+  Role: heading
+  Name: Sign in, save money
+  Level: 2
+
+  Role: text
+  Name: Sign in to 
+
+  Role: text
+  Name: save 10% or more
+
+  Role: text
+  Name:  with a free Booking.com membership
+
+  Role: link
+  Name: Sign in or register
+
