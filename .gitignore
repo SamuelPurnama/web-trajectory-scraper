@@ -7,6 +7,14 @@ local_output/
 # Ignore outputs directory (contains generated datasets)
 outputs/
 
+# Ignore python_files directory (contains generated task files)
+python_files/
+
+# Explicitly ignore Job, Housing, and Music folders in python_files
+vibecoded_tasks/python_files/Job/
+vibecoded_tasks/python_files/Housing/
+vibecoded_tasks/python_files/Music/
+
 # Python
 __pycache__/
 *.py[cod]

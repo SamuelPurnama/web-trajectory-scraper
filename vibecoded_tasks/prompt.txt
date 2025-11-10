@@ -18,11 +18,10 @@ YOU ARE GIVEN:
   - Page hierarchy and content structure
   - User interface elements and their relationships
 * Reference File: {reference_file} - Template and style guide for task generation
-* Screenshots: Visual context of the main website page
 * Child Pages Analysis: Additional functionality found in other pages that might be useful
 
 CONSTRAINTS
-0. YOU HAVE TO CREATE A MINIMUM OF 10 DIFFERENT TASKS.
+0. YOU HAVE TO CREATE A MINIMUM OF 10 DIFFERENT TASKS. (DO NOT INCLUDE LOGIN/SIGNUP TASKS)
 1. Return ONLY the full contents of `tasks_{website}.py` (no prose, no comments).
 2. Follow naming, structure, and patterns from reference_file (imports, task schema, helpers).
 3. Each task must have: unique name/id, clear objective, deterministic steps, input fields (if any) with sane defaults, success criteria/assertions, and realistic negative/edge checks where appropriate.
@@ -32,7 +31,7 @@ CONSTRAINTS
 7. Prefer tasks that terminate with verifiable state (URL, DOM text, confirmation number/pattern, cart total, banner text, signed-in indicator).
 8. No scraping or terms violations; keep flows realistic and lightweight.
 9. These tasks can be done from scratch. They do not require having an account, having a already purchased anything, or any prerequisite info. They can be done by anyone.
-10. Set the config to generate 10 of each task type, for a total of 70-90 tasks total. 
+10. Set the config to generate a total of around 70-90 tasks total. You should generate more tasks for more common instructions and less for 
 11. You dont have access to emails, vouchers, already purchased. TASKS CANT REQUIRE prerequisite items such as purchases, accounts, etc.
 12. For variable selectors (dropdowns, lists, filters, etc.), provide 20 or more choices unless there is a fixed amount. Examples:
     - Airport codes: Provide 20+ major airports (LAX, JFK, ORD, etc.)
@@ -44,9 +43,9 @@ CONSTRAINTS
     - Search terms: Provide 20+ different search terms
     - Any other variable selectors should have 20+ options 
 13. You are required to ground your task types based on the main functionalities found in the main page. This should cover at least 6 different tasks. 
-    Then you can refer to the functionalities in the child pages and generate more task types based on that. If there are a lot functionalities in the child pages,
-    you may create up to 15 different types.
-14. You should dive deep into the core functionalities which includes filters. 
+    Then you can refer to the functionalities in the child pages and generate more task types based on that. YOU SHOULD AIM TO CREATE 10 - 15 TASK TYPES IN TOTAL. You should still be specific with child tasks.
+14. YOU MUST dive deep into the core functionalities of the website which includes any filters or tools.
+15. Tasks should involve more than just navigating to a feature or page: THEY MUST PERFORM VARIOUS ACTIONS/TASKS WITHIN THAT PAGE/FEATURE.
 
 OUTPUT FORMAT
 

@@ -395,6 +395,48 @@ class ContextGatherer:
                                 "navbar_score": navbar_score
                             })
         
+        # If no navigation elements found with specific selectors, try extracting ALL links
+        # This helps with sites that use non-standard navigation structures
+        if not navigation_elements:
+            print(f"    No navigation elements found with standard selectors, trying all links...")
+            # Look for all links, but prioritize those in header/top sections
+            all_links = soup.find_all('a', href=True)
+            for link in all_links:
+                href = link.get('href')
+                text = link.get_text(strip=True)
+                
+                if href and text and len(text) < 100 and len(text) > 0:
+                    # Skip common non-navigation patterns
+                    skip_patterns = ['javascript:', 'mailto:', 'tel:', '#', 'void(0)']
+                    if any(pattern in href.lower() for pattern in skip_patterns):
+                        continue
+                    
+                    full_url = urljoin(base_url, href)
+                    
+                    # Only include same-domain links
+                    parsed = urlparse(full_url)
+                    base_parsed = urlparse(base_url)
+                    if parsed.netloc and parsed.netloc != base_parsed.netloc:
+                        continue
+                    
+                    if full_url not in found_links:
+                        found_links.add(full_url)
+                        navbar_score = self._calculate_navbar_score(link, soup)
+                        # Boost score for links in header/nav areas
+                        parent = link.parent
+                        if parent:
+                            parent_classes = ' '.join(parent.get('class', []) or [])
+                            parent_id = parent.get('id', '') or ''
+                            if any(keyword in (parent_classes + ' ' + parent_id).lower() for keyword in ['header', 'nav', 'menu', 'top', 'bar']):
+                                navbar_score += 0.2
+                        navigation_elements.append({
+                            "text": text,
+                            "url": full_url,
+                            "navbar_score": min(1.0, navbar_score)  # Cap at 1.0
+                        })
+            
+            print(f"    Found {len(navigation_elements)} links via fallback method")
+        
         # Sort by navbar score (highest first) to prioritize main navbar elements
         navigation_elements.sort(key=lambda x: x['navbar_score'], reverse=True)
         
@@ -466,10 +508,16 @@ class ContextGatherer:
         if not valid_links:
             return []
         
-        # Format links for LLM analysis with navbar scores
+        # Sort by navbar score and take top 25 for LLM analysis
+        valid_links_sorted = sorted(valid_links, key=lambda x: x['navbar_score'], reverse=True)
+        top_25_links = valid_links_sorted[:25]  # Only feed top 25 to LLM
+        
+        print(f"  Feeding top {len(top_25_links)} navigation elements to LLM (out of {len(valid_links)} valid elements)")
+        
+        # Format top 25 links for LLM analysis with navbar scores
         links_text = "\n".join([
             f"{i+1}. {link['text']} -> {link['url']} [Navbar Score: {link['navbar_score']:.2f}]"
-            for i, link in enumerate(valid_links)
+            for i, link in enumerate(top_25_links)
         ])
         
         # Screenshots are taken in the main gather_context method, not here
@@ -802,15 +850,17 @@ class ContextGatherer:
             prompt = f"""Analyze the following accessibility trees from child pages of a {classification} website and summarize all possible **user actions** that can be performed on each page.
 
 For each page:
-1. Identify **interactive elements** (buttons, links, inputs, dropdowns, toggles, etc.) and describe what they allow users to do.
+1. Identify every **interactive elements** (buttons, links, inputs, dropdowns, toggles, etc.) and describe what they allow users to do.
    - Example: “Button labeled ‘Add to Cart’ → allows user to add product to shopping cart.”
    - Example: “Link labeled ‘Forgot Password’ → navigates to password recovery page.”
+   - Example: “Input labeled 'Filter' → allows user to filter the search results. Possible values are: Newest, Oldest, Price Low to High, Price High to Low.”
 2. FOCUS ON THE CODE FUNCTIONALITIES THAT IS VISIBLE IN THAT PAGE:
     - Example: If the page is a product listing page, identify the filters and sorting options.
     - Example: If the page is a flight booking page, identify the flight options and booking options, all the buttons related to this functionality.
-3. If possible, describe **common workflows or sequences** of actions.
+3. FOR RADIOS, CHECKBOXES, TOGGLES, or OTHER SELECTABLE ELEMENTS, IDENTIFY THE POSSIBLE VALUES THAT CAN BE SELECTED.
+4. If possible, describe **common workflows or sequences** of actions.
    - Example: “User can search for a product → click on results → add to cart → proceed to checkout.”
-4. Note any **unique or page-specific actions** (e.g., “toggle map view,” “expand FAQ answers”).
+5. Note any **unique or page-specific actions** (e.g., “toggle map view,” “expand FAQ answers”).
 
 Format your output as:
 - **Page Name or URL (if identifiable)**

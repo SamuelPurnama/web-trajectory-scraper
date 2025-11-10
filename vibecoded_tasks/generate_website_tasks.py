@@ -68,8 +68,7 @@ class WebsiteTaskGenerator:
                  prompt_template_path: str = "prompt.txt",
                  reference_file_path: str = "reference_file.txt",
                  axtree_path: Optional[str] = None,
-                 use_enhanced_exploration: bool = True,
-                 screenshot_mode: str = "multiple"):
+                 use_enhanced_exploration: bool = True):
         """
         Initialize the WebsiteTaskGenerator.
         
@@ -89,7 +88,6 @@ class WebsiteTaskGenerator:
         self.reference_file_path = Path(reference_file_path)
         self.axtree_path = Path(axtree_path) if axtree_path else None
         self.use_enhanced_exploration = use_enhanced_exploration
-        self.screenshot_mode = screenshot_mode
         
         # Ensure output directory exists (create parent directories if needed)
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -270,19 +268,18 @@ class WebsiteTaskGenerator:
         
         return '\n\n'.join(comprehensive_elements), screenshots_info
     
-    def _collect_axtrees_and_images(self, website: str, classification: str) -> dict:
+    def _collect_axtrees_and_context(self, website: str, classification: str) -> dict:
         """
-        Collect main page axtree, screenshots, and child pages summary for LLM context.
+        Collect main page axtree and child pages summary for LLM context.
         
         Args:
             website: Website URL
             classification: Website classification
             
         Returns:
-            Dictionary with 'axtrees', 'images', and 'child_summary' keys
+            Dictionary with 'axtrees' and 'child_summary' keys
         """
         from pathlib import Path
-        import os
         
         domain = self._extract_domain(website)
         
@@ -300,14 +297,6 @@ class WebsiteTaskGenerator:
             with open(child_analysis_file, 'r', encoding='utf-8') as f:
                 child_summary = f.read()
         
-        # Collect images (limit to first 3 main page screenshots)
-        images = []
-        main_screenshots_dir = self.local_output_dir / classification / domain / "screenshots" / f"{domain}_screenshots"
-        if main_screenshots_dir.exists():
-            main_screenshots = sorted([f for f in os.listdir(main_screenshots_dir) if f.endswith('.png')])
-            for screenshot in main_screenshots[:3]:  # Limit to 3 main page screenshots
-                images.append(str(main_screenshots_dir / screenshot))
-        
         # Truncate axtrees to avoid context length issues
         full_axtrees = '\n\n'.join(axtrees_content)
         max_length = 20000  # Limit to ~20k characters to stay within token limits
@@ -319,7 +308,6 @@ class WebsiteTaskGenerator:
         
         return {
             'axtrees': truncated_axtrees,
-            'images': images,
             'child_summary': child_summary
         }
     
@@ -346,47 +334,36 @@ class WebsiteTaskGenerator:
             print(f"        _create_prompt: Gathering enhanced context...")
             
             # Use enhanced exploration to gather comprehensive context
-            gatherer = ContextGatherer(max_additional_pages=3, output_dir=str(self.local_output_dir), screenshot_mode=self.screenshot_mode)
+            gatherer = ContextGatherer(max_additional_pages=3, output_dir=str(self.local_output_dir), screenshot_mode="none")
             context_files = gatherer.gather_context(website, classification)
             
-            # Collect comprehensive elements and screenshots with distribution
-            comprehensive_elements, screenshots_info = self._collect_screenshots_and_elements(website, classification)
+            # Collect comprehensive elements
+            comprehensive_elements, _ = self._collect_screenshots_and_elements(website, classification)
             
             print(f"        _create_prompt: Enhanced context gathered from {len(context_files)} pages")
-            print(f"        _create_prompt: Screenshots distribution: {[info['count'] for info in screenshots_info]}")
             
             # Use comprehensive elements instead of axtree
             website_context = comprehensive_elements
         else:
             print(f"        _create_prompt: Using simple axtree...")
             website_context = self._get_simple_axtree(website, classification)
-            screenshots_info = []
         
         # Try to get classification-specific reference file, fallback to general
         reference_file_content = self._get_reference_file(classification)
         
-        # Create screenshots section for prompt
-        screenshots_section = ""
-        if screenshots_info:
-            screenshots_section = "\n\n=== SCREENSHOTS ===\n"
-            for info in screenshots_info:
-                screenshots_section += f"\n{info['page'].upper()} PAGE ({info['count']} screenshots):\n"
-                for screenshot_path in info['screenshots']:
-                    screenshots_section += f"- {screenshot_path}\n"
-        
-        # Add main page axtree, screenshots, and child pages summary
-        axtrees_and_images = self._collect_axtrees_and_images(website, classification)
+        # Add main page axtree and child pages summary
+        axtrees_and_context = self._collect_axtrees_and_context(website, classification)
         
         # Build enhanced context with main page axtree and child pages summary
-        enhanced_context = f"{website_context}{screenshots_section}"
+        enhanced_context = website_context
         
         # Add main page axtree
-        if axtrees_and_images['axtrees']:
-            enhanced_context += f"\n\n=== MAIN PAGE ACCESSIBILITY TREE ===\n{axtrees_and_images['axtrees']}"
+        if axtrees_and_context['axtrees']:
+            enhanced_context += f"\n\n=== MAIN PAGE ACCESSIBILITY TREE ===\n{axtrees_and_context['axtrees']}"
         
         # Add child pages summary as additional functions
-        if axtrees_and_images['child_summary']:
-            enhanced_context += f"\n\n=== ADDITIONAL FUNCTIONS FOUND IN CHILD PAGES ===\n{axtrees_and_images['child_summary']}"
+        if axtrees_and_context['child_summary']:
+            enhanced_context += f"\n\n=== ADDITIONAL FUNCTIONS FOUND IN CHILD PAGES ===\n{axtrees_and_context['child_summary']}"
         
         # print(f"        _create_prompt: Creating prompt...")
         prompt = self.prompt_template.format(
@@ -415,27 +392,18 @@ class WebsiteTaskGenerator:
         prompt = self._create_prompt(website, classification)
         # print(f"      _generate_task_file: Prompt created, length: {len(prompt)}")
         
-        # Collect axtrees and images for LLM
-        axtrees_and_images = self._collect_axtrees_and_images(website, classification)
-        
         # print(f"      _generate_task_file: Calling AI model...")
         # Use OpenAI library directly instead of ell
         from openai import OpenAI
         
         client = OpenAI()
         
-        # Note: ell.image() is not available in this version of ell library
-        # Images are included in the text prompt instead
-        image_note = ""
-        if axtrees_and_images['images']:
-            image_note = f"\n\nNote: {len(axtrees_and_images['images'])} screenshots are available but cannot be processed due to library limitations. Using text-based analysis only."
-        
         # Call OpenAI API directly
         response = client.chat.completions.create(
             model="gpt-4.1",
             messages=[
                 {"role": "system", "content": "You are a senior coding professional. Generate comprehensive Python task files with 20+ choices for variable selectors."},
-                {"role": "user", "content": prompt + image_note}
+                {"role": "user", "content": prompt}
             ],
             temperature=0.3,
             max_tokens=8000
@@ -615,7 +583,6 @@ def main():
     parser.add_argument("--delay", type=float, default=1.0, help="Delay between requests in seconds")
     parser.add_argument("--enhanced-exploration", action="store_true", default=True, help="Use enhanced multi-page exploration")
     parser.add_argument("--simple-exploration", action="store_true", help="Use simple single-page exploration")
-    parser.add_argument("--screenshot-mode", choices=["none", "single", "multiple"], default="multiple", help="Screenshot mode: none, single viewport, or multiple sections")
     
     args = parser.parse_args()
     
@@ -630,8 +597,7 @@ def main():
         prompt_template_path=args.prompt_template,
         reference_file_path=args.reference_file,
         axtree_path=args.axtree_file,
-        use_enhanced_exploration=use_enhanced,
-        screenshot_mode=args.screenshot_mode
+        use_enhanced_exploration=use_enhanced
     )
     
     # Set request delay
