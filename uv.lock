@@ -3486,7 +3486,7 @@ wheels = [
 ]
 
 [[package]]
-name = "webolmo-synthetic"
+name = "web-trajectory-scraper"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
