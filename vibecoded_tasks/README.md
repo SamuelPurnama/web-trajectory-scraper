@@ -6,10 +6,10 @@ This module generates web task files for websites using ChatGPT via the `ell` li
 
 1. Install dependencies:
 ```bash
-pip install -r requirements.txt
+uv sync   # from the repo root
 ```
 
-2. Set up your ell library API key (follow ell library documentation)
+2. Set `OPENAI_API_KEY` (the `ell` library uses it to call ChatGPT)
 
 ## Usage
 
@@ -35,8 +35,9 @@ python generate_website_tasks.py --csv-file custom_websites.csv --output-dir my_
 
 ## Parameters
 
-- `--csv-file`: Path to CSV file with websites (default: 585_websites.csv)
-- `--output-dir`: Output directory for generated files (default: generated_tasks)
+- `--csv-file`: Path to CSV file with websites (default: 739_websites.csv, not included; one URL per row)
+- `--output-dir`: Output directory for JSON task files (default: ./outputs/json_tasks)
+- `--local-output-dir`: Output directory for generated Python files (default: ./local_output)
 - `--prompt-template`: Path to prompt template file (default: prompt.txt)
 - `--reference-file`: Path to reference file (default: reference_file.txt)
 - `--axtree-file`: Path to axtree file (optional)

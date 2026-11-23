@@ -23,9 +23,9 @@ uv run --active -m website_explorer https://autozone.com --max-depth 2 --depth-m
 ```
 
 ### Batch Processing (recommended)
-Edit configs in `parallel_batch_explorer`:
+Edit configs in `parallel_website_explorer.py`:
 ```bash
-uv run -m parallel_batch_explorer
+uv run -m parallel_website_explorer
 ```
 
 After graphs are made we need to extract individual paths and turn them into tasks.
@@ -82,7 +82,6 @@ output_dir/
 }
 ```
 
-These can be later fed into the deterministic agent to produce verifiable navigation trajectories. Example website:
+These can be later fed into the deterministic agent to produce verifiable navigation trajectories.
 
-![Example Graph](example_graph.png)
 
